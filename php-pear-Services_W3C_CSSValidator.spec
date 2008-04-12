@@ -35,13 +35,14 @@ validator.
 In PEAR status of this package is: %{_status}.
 
 %description -l pl.UTF-8
-Pakiet ten udostępnia zorientowango obiektowo interfejsu do API usługi
-walidacji CSS serwisu W3C (http://jigsaw.w3.org/css-validator/). Przy
-użyciu tego pakietu możliwe jest podłączenie się do instancji
-walidacji i pobranie wyniku walidacji (prawda|fałsz) jak również
-komunikaty błędów i ostrzeżeń dla danego arkusza stylów.
+Pakiet ten udostępnia zorientowanego obiektowo interfejsu do API
+usługi kontroli poprawności CSS serwisu W3C
+(http://jigsaw.w3.org/css-validator/). Przy użyciu tego pakietu
+możliwe jest podłączenie się do instancji walidatora i pobranie wyniku
+kontroli poprawności (prawda|fałsz) jak również komunikatów błędów i
+ostrzeżeń dla danego arkusza stylów.
 
-Przez wykorzystanie formatu SOAP 1.2, w wyniku zwracane są proste
+Poprzez wykorzystanie formatu SOAP 1.2, w wyniku zwracane są proste
 obiekty zawierające wszystkie informacje walidatora.
 
 Ta klasa ma w PEAR status: %{_status}.
