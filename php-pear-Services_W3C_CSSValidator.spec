@@ -1,19 +1,17 @@
 %include	/usr/lib/rpm/macros.php
-%define		_class		Services
-%define		_subclass	W3C_CSSValidator
 %define		_status		alpha
 %define		_pearname	Services_W3C_CSSValidator
 Summary:	%{_pearname} - An Object Oriented Interface to the W3C CSS Validator service
 Summary(pl.UTF-8):	%{_pearname} - zorientowany obiektowo interfejs do usługi walidacji CSS
 Name:		php-pear-%{_pearname}
 Version:	0.1.0
-Release:	3
+Release:	4
 License:	BSD
 Group:		Development/Languages/PHP
 Source0:	http://pear.php.net/get/%{_pearname}-%{version}.tgz
 # Source0-md5:	7d4caa54880de5b94808db8cba85f665
 URL:		http://pear.php.net/package/Services_W3C_CSSValidator/
-BuildRequires:	php-pear-PEAR
+BuildRequires:	php-pear-PEAR >= 1:1.5.4
 BuildRequires:	rpm-php-pearprov >= 4.4.2-11
 Requires:	php-pear
 Requires:	php-pear-HTTP_Request >= 1.3.0
@@ -50,9 +48,9 @@ Ta klasa ma w PEAR status: %{_status}.
 Summary:	Tests for PEAR::%{_pearname}
 Summary(pl.UTF-8):	Testy dla PEAR::%{_pearname}
 Group:		Development/Languages/PHP
-AutoReq:	no
 Requires:	%{name} = %{version}-%{release}
 AutoProv:	no
+AutoReq:	no
 
 %description tests
 Tests for PEAR::%{_pearname}.
