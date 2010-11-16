@@ -4,18 +4,19 @@
 Summary:	%{_pearname} - An Object Oriented Interface to the W3C CSS Validator service
 Summary(pl.UTF-8):	%{_pearname} - zorientowany obiektowo interfejs do usługi walidacji CSS
 Name:		php-pear-%{_pearname}
-Version:	0.1.0
-Release:	4
+Version:	0.2.2
+Release:	1
 License:	BSD
 Group:		Development/Languages/PHP
 Source0:	http://pear.php.net/get/%{_pearname}-%{version}.tgz
-# Source0-md5:	7d4caa54880de5b94808db8cba85f665
+# Source0-md5:	33f7687729294878c32963a8b8b4f079
 URL:		http://pear.php.net/package/Services_W3C_CSSValidator/
 BuildRequires:	php-pear-PEAR >= 1:1.5.4
 BuildRequires:	rpm-php-pearprov >= 4.4.2-11
 BuildRequires:	rpmbuild(macros) >= 1.300
 Requires:	php-pear
-Requires:	php-pear-HTTP_Request >= 1.3.0
+Requires:	php-pear-HTTP_Request2 >= 0.2.0
+Obsoletes:	php-pear-Services_W3C_CSSValidator-tests
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -45,27 +46,21 @@ obiekty zawierające wszystkie informacje walidatora.
 
 Ta klasa ma w PEAR status: %{_status}.
 
-%package tests
-Summary:	Tests for PEAR::%{_pearname}
-Summary(pl.UTF-8):	Testy dla PEAR::%{_pearname}
-Group:		Development/Languages/PHP
-Requires:	%{name} = %{version}-%{release}
-AutoProv:	no
-AutoReq:	no
-
-%description tests
-Tests for PEAR::%{_pearname}.
-
-%description tests -l pl.UTF-8
-Testy dla PEAR::%{_pearname}.
-
 %prep
 %pear_package_setup
+
+mv docs/Services_W3C_CSSValidator/docs/examples .
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{php_pear_dir}
 %pear_package_install
+
+install -d $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
+cp -a examples/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
+
+# tests should not be packaged
+%{__rm} -r $RPM_BUILD_ROOT%{php_pear_dir}/tests/%{_pearname}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -73,12 +68,9 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc install.log
-%doc docs/Services_W3C_CSSValidator/docs/examples
 %{php_pear_dir}/.registry/*.reg
 %dir %{php_pear_dir}/Services/W3C
 %{php_pear_dir}/Services/W3C/CSSValidator
 %{php_pear_dir}/Services/W3C/CSSValidator.php
 
-%files tests
-%defattr(644,root,root,755)
-%{php_pear_dir}/tests/Services_W3C_CSSValidator
+%{_examplesdir}/%{name}-%{version}
