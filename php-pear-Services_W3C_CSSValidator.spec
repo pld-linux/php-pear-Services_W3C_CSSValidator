@@ -1,19 +1,19 @@
+%define		status		alpha
+%define		pearname	Services_W3C_CSSValidator
 %include	/usr/lib/rpm/macros.php
-%define		_status		alpha
-%define		_pearname	Services_W3C_CSSValidator
-Summary:	%{_pearname} - An Object Oriented Interface to the W3C CSS Validator service
-Summary(pl.UTF-8):	%{_pearname} - zorientowany obiektowo interfejs do usługi walidacji CSS
-Name:		php-pear-%{_pearname}
-Version:	0.2.2
+Summary:	%{pearname} - An Object Oriented Interface to the W3C CSS Validator service
+Summary(pl.UTF-8):	%{pearname} - zorientowany obiektowo interfejs do usługi walidacji CSS
+Name:		php-pear-%{pearname}
+Version:	0.2.3
 Release:	1
 License:	BSD
 Group:		Development/Languages/PHP
-Source0:	http://pear.php.net/get/%{_pearname}-%{version}.tgz
-# Source0-md5:	33f7687729294878c32963a8b8b4f079
+Source0:	http://pear.php.net/get/%{pearname}-%{version}.tgz
+# Source0-md5:	ad89f426eb4e28c889db7e42d5f1a1b5
 URL:		http://pear.php.net/package/Services_W3C_CSSValidator/
 BuildRequires:	php-pear-PEAR >= 1:1.5.4
 BuildRequires:	rpm-php-pearprov >= 4.4.2-11
-BuildRequires:	rpmbuild(macros) >= 1.300
+BuildRequires:	rpmbuild(macros) >= 1.580
 Requires:	php-pear
 Requires:	php-pear-HTTP_Request2 >= 0.2.0
 Obsoletes:	php-pear-Services_W3C_CSSValidator-tests
@@ -31,7 +31,7 @@ By using the SOAP 1.2 output format from the validator, you are
 returned simple objects containing all the information from the
 validator.
 
-In PEAR status of this package is: %{_status}.
+In PEAR status of this package is: %{status}.
 
 %description -l pl.UTF-8
 Pakiet ten udostępnia zorientowanego obiektowo interfejsu do API
@@ -44,11 +44,12 @@ ostrzeżeń dla danego arkusza stylów.
 Poprzez wykorzystanie formatu SOAP 1.2, w wyniku zwracane są proste
 obiekty zawierające wszystkie informacje walidatora.
 
-Ta klasa ma w PEAR status: %{_status}.
+Ta klasa ma w PEAR status: %{status}.
 
 %prep
 %pear_package_setup
 
+mv ./usr/share/pear/data/Services_W3C_CSSValidator/README .
 mv docs/Services_W3C_CSSValidator/docs/examples .
 
 %install
@@ -64,10 +65,9 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc install.log
+%doc install.log README
 %{php_pear_dir}/.registry/*.reg
 %dir %{php_pear_dir}/Services/W3C
 %{php_pear_dir}/Services/W3C/CSSValidator
 %{php_pear_dir}/Services/W3C/CSSValidator.php
-
 %{_examplesdir}/%{name}-%{version}
