@@ -1,6 +1,5 @@
 %define		status		alpha
 %define		pearname	Services_W3C_CSSValidator
-%include	/usr/lib/rpm/macros.php
 Summary:	%{pearname} - An Object Oriented Interface to the W3C CSS Validator service
 Summary(pl.UTF-8):	%{pearname} - zorientowany obiektowo interfejs do usługi walidacji CSS
 Name:		php-pear-%{pearname}
