@@ -4,7 +4,7 @@ Summary:	%{pearname} - An Object Oriented Interface to the W3C CSS Validator ser
 Summary(pl.UTF-8):	%{pearname} - zorientowany obiektowo interfejs do usługi walidacji CSS
 Name:		php-pear-%{pearname}
 Version:	0.2.3
-Release:	1
+Release:	2
 License:	BSD
 Group:		Development/Languages/PHP
 Source0:	http://pear.php.net/get/%{pearname}-%{version}.tgz
